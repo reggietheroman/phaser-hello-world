@@ -4,7 +4,11 @@
   "description": "This is the 'hello world' sample program of Phaser.io",
   "main": "index.html",
   "scripts": {
-    "start": "http-server",
+    "build": "npm run copyJs && npm run copyHtml",
+    "copyHtml": "copyfiles ./index.html public",
+    "copyJs": "npm run copyPhaser",
+    "copyPhaser": "copyfiles -u 3 ./node_modules/phaser/dist/*.min.js public/js",
+    "start": "./node_modules/http-server/bin/http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +27,7 @@
   },
   "homepage": "https://github.com/reggietheroman/phaser-hello-world#readme",
   "dependencies": {
+    "copyfiles": "^2.0.0",
     "http-server": "^0.11.1",
     "phaser": "^3.11.0"
   }
